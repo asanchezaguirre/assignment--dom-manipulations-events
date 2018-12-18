@@ -60,4 +60,38 @@ document.querySelectorAll(".point").forEach(function (btn){
 /* TASK 4 (Adventure Mode)-- Move Item List to List */
 
 
+//Hago una iteraciòn para que recorra todos los elementos de answer-box
+document.querySelectorAll('.answer-box li').forEach(function(item){
+  //Agrego el evento click a los index
+  item.addEventListener('click', function(e){
+    //Declaramos dos variables
+    //ocupo target para asociar a un mismo controlador a varios elementos
+    //la otra variable asocia al nodo principal y su clase
+    var itemLista = e.currentTarget;
+    var classOfItemLista = e.currentTarget.parentNode.className;
+    itemLista.remove();
+    //si alguno de los elementos es identico a la clase padre
+    if (classOfItemLista === "good-standing-list") {
+      //se agregarà a clase probation y removerà
+      document.querySelector('.probation-list').appendChild(itemLista);
+      //de lo contrario, agregarà a dtanding y removerá
+    } else {
+      document.querySelector('.good-standing-list').appendChild(itemLista);      
+    }
+  });
+});
+
+
 /* TASK 5 (Adventure Mode) -- Change Text Background Color From Palette */
+
+
+//itero sobre cada elemento que integra el span
+document.querySelectorAll('.palette span').forEach(function(fondo){
+  //Agrego el evento click sobre los index que lo integran
+  fondo.addEventListener('click', function(e){
+    //Declaro la variable del color de fondo, que tenga el atribute de la clase nombrado en el text content de cada span
+    var fondoColor = e.target.attributes.class.textContent;
+    //La clase del p es igual a esa clase de cada color de fondo que se le dio click
+    document.querySelector('.msg').attributes.class.textContent = "msg " + fondoColor;
+  });
+});
